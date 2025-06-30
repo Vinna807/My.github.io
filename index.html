@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Perfect Lover</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      color: #fff;
+    }
+
+    .lover-img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 0 20px #ff4da6;
+      transition: transform 0.3s ease;
+    }
+
+    .lover-img:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-top: 20px;
+      color: #fff;
+      text-shadow: 0 0 10px #ff6f91;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      background-color: #ff6f91;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff3f6c;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #fff;
+      display: none;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      position: absolute;
+      transform: rotate(45deg);
+      animation: floatHearts 5s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 🔄 Replace with your lover's image -->
+    <img src="NS.jpg" alt="Perfect Lover" class="lover-img" />
+
+    <!-- ✍️ Customize names -->
+    <h1>My Perfect Lover: Soeurt Lisa 💘</h1>
+    <p>You're my sunshine, my heart, my everything.</p>
+
+    <!-- 💬 Button -->
+    <button onclick="showLove()">Click to Feel the Love 💖</button>
+
+    <!-- 💌 Love message -->
+    <div class="message" id="loveMessage">
+      You complete me. Forever & always. 💞
+    </div>
+  </div>
+
+  <!-- Floating Hearts (JS) -->
+  <div class="hearts" id="heartsContainer"></div>
+
+  <script>
+    function showLove() {
+      const message = document.getElementById('loveMessage');
+      message.style.display = 'block';
+
+      // Create heart burst
+      const heartsContainer = document.getElementById('heartsContainer');
+      for (let i = 0; i < 10; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 2 + 's';
+        heartsContainer.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+    }
+  </script>
+</body>
+</html>
